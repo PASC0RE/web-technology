@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Цэс удирдах</title>
+  <!-- inline style устгаж, гадны CSS холбов -->
+  <link rel="stylesheet" href="../css/js/style.css">
+</head>
+<body onload="initMenu()">
+
+  <div class="admin-nav">
+    <h2>📂 Цэс удирдах</h2>
+    <a href="dashboard.html">← Буцах</a>
+  </div>
+
+  <div class="admin-container">
+    <!-- Нэмэх форм -->
+    <div class="add-form">
+      <input type="text" id="menuName" placeholder="Цэсний нэр (жш: Бидний тухай)" />
+      <input type="text" id="menuLink" placeholder="Линк (жш: #about)" />
+      <button class="btn btn-green" onclick="addMenu()">➕ Нэмэх</button>
+    </div>
+
+    <!-- Хүснэгт -->
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Цэсний нэр</th>
+          <th>Линк</th>
+          <th>Үйлдэл</th>
+        </tr>
+      </thead>
+      <tbody id="menuList"></tbody>
+    </table>
+  </div>
+
+  <!-- inline script устгаж, admin.js ашиглав -->
+  <script src="../css/js/admin.js"></script>
+
+</body>
+</html>

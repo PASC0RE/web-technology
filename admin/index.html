@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Админ нэвтрэх</title>
+  <!-- CSS head дотор -->
+  <link rel="stylesheet" href="../css/js/style.css">
+</head>
+<body>
+
+  <div class="login-wrapper">
+    <div class="login-box">
+      <h2>🔐 Админ нэвтрэх</h2>
+      <input type="text" id="username" placeholder="Нэвтрэх нэр" onkeydown="handleLoginKey(event)" />
+      <input type="password" id="password" placeholder="Нууц үг" onkeydown="handleLoginKey(event)" />
+      <p class="error-msg" id="error">Нэвтрэх нэр эсвэл нууц үг буруу!</p>
+      <button onclick="login()">Нэвтрэх</button>
+    </div>
+  </div>
+
+  <!-- admin.js хамгийн доор, inline script байхгүй -->
+  <script src="../css/js/admin.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мэдээ удирдах</title>
+  <!-- inline style устгаж, гадны CSS холбов -->
+  <link rel="stylesheet" href="../css/js/style.css">
+</head>
+<body onload="initNews()">
+
+  <div class="admin-nav">
+    <h2>📰 Мэдээ удирдах</h2>
+    <a href="dashboard.html">← Буцах</a>
+  </div>
+
+  <div class="admin-container">
+    <!-- Нэмэх форм -->
+    <div class="add-form">
+      <input type="text" id="newsTitle" placeholder="Мэдээний гарчиг" />
+      <textarea id="newsContent" rows="3" placeholder="Мэдээний агуулга"></textarea>
+      <button class="btn btn-green" onclick="addNews()">➕ Нэмэх</button>
+    </div>
+
+    <!-- Хүснэгт -->
+    <table class="admin-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Гарчиг</th>
+          <th>Агуулга</th>
+          <th>Үйлдэл</th>
+        </tr>
+      </thead>
+      <tbody id="newsList"></tbody>
+    </table>
+  </div>
+
+  <!-- inline script устгаж, admin.js ашиглав -->
+  <script src="../css/js/admin.js"></script>
+
+</body>
+</html>

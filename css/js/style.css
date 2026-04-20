@@ -1,0 +1,293 @@
+/* ===== GENERAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background: #f4f4f4;
+  color: #333;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ===== NAVBAR ===== */
+nav {
+  background: #2c3e50;
+  padding: 15px 30px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+nav a {
+  color: white;
+  font-size: 15px;
+  padding: 6px 14px;
+  border-radius: 5px;
+  transition: background 0.2s;
+}
+
+nav a:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+/* ===== HERO ===== */
+.hero {
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+  color: white;
+  text-align: center;
+  padding: 80px 20px;
+}
+
+.hero h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+/* ===== NEWS SECTION ===== */
+.news-section {
+  padding: 40px 30px;
+}
+
+.news-section h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+  border-left: 4px solid #3498db;
+  padding-left: 12px;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.news-card {
+  background: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.news-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.news-card h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.news-card p {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+.empty-msg {
+  color: #999;
+  font-style: italic;
+  padding: 20px 0;
+}
+
+/* ===== FOOTER ===== */
+footer {
+  background: #2c3e50;
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+/* ===== ADMIN - LOGIN ===== */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #2c3e50, #3498db);
+}
+
+.login-box {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+  width: 340px;
+}
+
+.login-box h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2c3e50;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.login-box button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #3498db;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.login-box button:hover { background: #2980b9; }
+
+.error-msg {
+  color: #e74c3c;
+  font-size: 13px;
+  margin-top: 8px;
+  display: none;
+}
+
+/* ===== ADMIN - NAVBAR ===== */
+.admin-nav {
+  background: #2c3e50;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.admin-nav h2 { font-size: 20px; }
+
+.admin-nav a, .admin-nav button {
+  color: white;
+  background: rgba(255,255,255,0.15);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.admin-nav a:hover, .admin-nav button:hover {
+  background: rgba(255,255,255,0.25);
+}
+
+/* ===== ADMIN - DASHBOARD CARDS ===== */
+.dashboard-cards {
+  display: flex;
+  gap: 25px;
+  padding: 50px 30px;
+  justify-content: center;
+}
+
+.dash-card {
+  background: white;
+  border-radius: 12px;
+  padding: 40px 30px;
+  text-align: center;
+  width: 220px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  text-decoration: none;
+  color: #333;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.dash-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.dash-card .icon { font-size: 48px; margin-bottom: 10px; }
+.dash-card p { font-size: 16px; font-weight: bold; color: #2c3e50; }
+
+/* ===== ADMIN - TABLE ===== */
+.admin-container { padding: 30px; }
+
+.add-form {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 25px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: flex-end;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.add-form input,
+.add-form textarea {
+  padding: 10px 14px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  flex: 1;
+  min-width: 200px;
+}
+
+.add-form textarea { resize: vertical; min-height: 60px; }
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: opacity 0.2s;
+}
+
+.btn:hover { opacity: 0.85; }
+.btn-green  { background: #2ecc71; color: white; }
+.btn-blue   { background: #3498db; color: white; }
+.btn-red    { background: #e74c3c; color: white; }
+.btn-gray   { background: #95a5a6; color: white; }
+
+.admin-table {
+  width: 100%;
+  background: white;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.admin-table th {
+  background: #2c3e50;
+  color: white;
+  padding: 13px 15px;
+  text-align: left;
+}
+
+.admin-table td {
+  padding: 12px 15px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+
+.admin-table tr:hover td { background: #f9f9f9; }
