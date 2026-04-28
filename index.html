@@ -297,32 +297,34 @@
     <p>© 2026 Миний сайт — <span>eo_to</span></p>
   </footer>
 
-  <script>
-   // Цэс
-fetch('http://localhost:3000/api/menus')
-  .then(r => r.json())
-  .then(menus => {
-    document.getElementById('dynamicMenu').innerHTML =
-      menus.map(m => `<a href="${m.link}">${m.name}</a>`).join('');
-  });
+<script>
+    const API = 'https://web-technology-zeta.vercel.app/api';
 
-// Мэдээ
-fetch('http://localhost:3000/api/news')
-  .then(r => r.json())
-  .then(news => {
-    const grid = document.getElementById('dynamicNews');
-    grid.innerHTML = news.length === 0
-      ? `<div class="empty-state">
-           <div class="empty-state-icon">📭</div>
-           <p>Одоогоор мэдээ байхгүй байна.<br>Админ хэсгээс мэдээ нэмнэ үү.</p>
-         </div>`
-      : news.map((n, i) => `
-          <div class="news-card">
-            <div class="news-card-num">№ ${String(i+1).padStart(2,'0')}</div>
-            <h3>${n.title}</h3>
-            <p>${n.content}</p>
-          </div>`).join('');
-  });
+    // Цэс
+    fetch(`${API}/menus`)
+      .then(r => r.json())
+      .then(menus => {
+        document.getElementById('dynamicMenu').innerHTML =
+          menus.map(m => `<a href="${m.link}">${m.name}</a>`).join('');
+      });
+
+    // Мэдээ
+    fetch(`${API}/news`)
+      .then(r => r.json())
+      .then(news => {
+        const grid = document.getElementById('dynamicNews');
+        grid.innerHTML = news.length === 0
+          ? `<div class="empty-state">
+               <div class="empty-state-icon">📭</div>
+               <p>Одоогоор мэдээ байхгүй байна.<br>Админ хэсгээс мэдээ нэмнэ үү.</p>
+             </div>`
+          : news.map((n, i) => `
+              <div class="news-card">
+                <div class="news-card-num">№ ${String(i+1).padStart(2,'0')}</div>
+                <h3>${n.title}</h3>
+                <p>${n.content}</p>
+              </div>`).join('');
+      });
   </script>
 
 </body>
