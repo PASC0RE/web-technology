@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/api/news/:id", "destination": "/api/news-id" },
+    { "source": "/api/menus/:id", "destination": "/api/menus-id" }
+  ]
+}
