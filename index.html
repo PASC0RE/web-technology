@@ -299,32 +299,56 @@
 
 <script>
     const API = 'https://web-technology-zeta.vercel.app/api';
+let allNews = [];
+let activeCategory = null;
 
-    // Цэс
-    fetch(`${API}/menus`)
-      .then(r => r.json())
-      .then(menus => {
-        document.getElementById('dynamicMenu').innerHTML =
-          menus.map(m => `<a href="${m.link}">${m.name}</a>`).join('');
-      });
+// Цэс татах
+fetch(`${API}/menus`)
+  .then(r => r.json())
+  .then(menus => {
+    document.getElementById('dynamicMenu').innerHTML =
+      menus.map(m => `
+        <a href="#news" onclick="filterNews('${m.name}')">${m.name}</a>
+      `).join('');
+  });
 
-    // Мэдээ
-    fetch(`${API}/news`)
-      .then(r => r.json())
-      .then(news => {
-        const grid = document.getElementById('dynamicNews');
-        grid.innerHTML = news.length === 0
-          ? `<div class="empty-state">
-               <div class="empty-state-icon">📭</div>
-               <p>Одоогоор мэдээ байхгүй байна.<br>Админ хэсгээс мэдээ нэмнэ үү.</p>
-             </div>`
-          : news.map((n, i) => `
-              <div class="news-card">
-                <div class="news-card-num">№ ${String(i+1).padStart(2,'0')}</div>
-                <h3>${n.title}</h3>
-                <p>${n.content}</p>
-              </div>`).join('');
-      });
+// Мэдээ татах
+fetch(`${API}/news`)
+  .then(r => r.json())
+  .then(news => {
+    allNews = news;
+    renderNews(news);
+  });
+
+function filterNews(category) {
+  activeCategory = category;
+  // Цэсний active харагдал
+  document.querySelectorAll('#dynamicMenu a').forEach(a => {
+    a.style.fontWeight = a.textContent === category ? '700' : '500';
+    a.style.color = a.textContent === category ? '#6366f1' : '';
+  });
+  const filtered = allNews.filter(n => n.category === category);
+  renderNews(filtered);
+}
+
+function renderNews(news) {
+  const grid = document.getElementById('dynamicNews');
+  // Section title шинэчлэх
+  const title = document.querySelector('.section-title');
+  if (title) title.textContent = activeCategory || 'Мэдээ';
+
+  grid.innerHTML = news.length === 0
+    ? `<div class="empty-state">
+         <div class="empty-state-icon">📭</div>
+         <p>Одоогоор мэдээ байхгүй байна.<br>Админ хэсгээс мэдээ нэмнэ үү.</p>
+       </div>`
+    : news.map((n, i) => `
+        <div class="news-card">
+          <div class="news-card-num">№ ${String(i+1).padStart(2,'0')}</div>
+          <h3>${n.title}</h3>
+          <p>${n.content}</p>
+        </div>`).join('');
+}
   </script>
 
 </body>

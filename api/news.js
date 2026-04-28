@@ -8,12 +8,16 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(200).end();
 
   if (req.method === 'GET') {
-    const rows = await sql`SELECT * FROM news ORDER BY id DESC`;
+    const { category } = req.query;
+    const rows = category
+      ? await sql`SELECT * FROM news WHERE category=${category} ORDER BY id DESC`
+      : await sql`SELECT * FROM news ORDER BY id DESC`;
     return res.json(rows);
   }
+
   if (req.method === 'POST') {
-    const { title, content } = req.body;
-    const rows = await sql`INSERT INTO news (title, content) VALUES (${title}, ${content}) RETURNING *`;
+    const { title, content, category } = req.body;
+    const rows = await sql`INSERT INTO news (title, content, category) VALUES (${title}, ${content}, ${category}) RETURNING *`;
     return res.json(rows[0]);
   }
 }

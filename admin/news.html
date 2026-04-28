@@ -14,13 +14,14 @@
     <a href="dashboard.html">← Буцах</a>
   </div>
 
-  <div class="admin-container">
-    <!-- Нэмэх форм -->
-    <div class="add-form">
-      <input type="text" id="newsTitle" placeholder="Мэдээний гарчиг" />
-      <textarea id="newsContent" rows="3" placeholder="Мэдээний агуулга"></textarea>
-      <button class="btn btn-green" onclick="addNews()">➕ Нэмэх</button>
-    </div>
+  <div class="add-form">
+  <input type="text" id="newsTitle" placeholder="Мэдээний гарчиг" />
+  <textarea id="newsContent" rows="3" placeholder="Мэдээний агуулга"></textarea>
+  <select id="newsCategory">
+    <option value="">-- Цэс сонгох --</option>
+  </select>
+  <button class="btn btn-green" onclick="addNews()">➕ Нэмэх</button>
+</div>
 
     <!-- Хүснэгт -->
     <table class="admin-table">

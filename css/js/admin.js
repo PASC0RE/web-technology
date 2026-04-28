@@ -83,26 +83,36 @@ let news = [];
 
 async function initNews() {
   checkAuth();
+
+  // Цэсүүдийг татаж dropdown-д нэмэх
+  const menuRes = await fetch(`${API}/menus`);
+  const menuList = await menuRes.json();
+  const select = document.getElementById('newsCategory');
+  if (select) {
+    select.innerHTML = '<option value="">-- Цэс сонгох --</option>' +
+      menuList.map(m => `<option value="${m.name}">${m.name}</option>`).join('');
+  }
+
   const res = await fetch(`${API}/news`);
   news = await res.json();
   renderNewsTable();
 }
 
-function renderNewsTable() {
-  const tbody = document.getElementById('newsList');
-  if (!tbody) return;
-  tbody.innerHTML = news.length === 0
-    ? '<tr><td colspan="4" style="text-align:center;color:#999;padding:20px;">Мэдээ байхгүй</td></tr>'
-    : news.map(n => `
-      <tr>
-        <td>${news.indexOf(n)+1}</td>
-        <td><strong>${n.title}</strong></td>
-        <td style="color:#666;font-size:13px">${n.content.substring(0,80)}...</td>
-        <td>
-          <button class="btn btn-blue" onclick="editNews(${n.id})">✏️ Засах</button>
-          <button class="btn btn-red" onclick="deleteNews(${n.id})">🗑️ Устгах</button>
-        </td>
-      </tr>`).join('');
+async function addNews() {
+  const title = document.getElementById('newsTitle').value.trim();
+  const content = document.getElementById('newsContent').value.trim();
+  const category = document.getElementById('newsCategory').value;
+  if (!title || !content) return alert('Дутуу байна!');
+  if (!category) return alert('Цэс сонгоно уу!');
+
+  await fetch(`${API}/news`, {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({ title, content, category })
+  });
+  document.getElementById('newsTitle').value = '';
+  document.getElementById('newsContent').value = '';
+  await initNews();
 }
 
 async function addNews() {
